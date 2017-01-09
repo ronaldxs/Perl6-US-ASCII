@@ -39,6 +39,8 @@ my %charset-str =
     ),
 ;
 
+plan 24;
+
 # should be able to loop with interpolation but ...
 # grammar g { token t { <[2]> } }; say so "2" ~~ /<g::t>/; my $rname = "t"; say so "2" ~~ /<g::($rname)>/
 # see also https://docs.perl6.org/language/packages#index-entry-%3A%3A%28%29
