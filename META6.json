@@ -5,7 +5,8 @@
     "description" : "US-ASCII restricted character classes and related.",
     "authors" : [ "Ron Schmidt" ],
     "provides" : {
-        "US-ASCII"
+        "US-ASCII"      :   "lib/US-ASCII.pm6",
+        "US-ASCII-UC"   :   "lib/US-ASCII.pm6"
     },
     "depends" : [ ],
     "resources" : [ ],

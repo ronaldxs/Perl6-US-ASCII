@@ -1,4 +1,4 @@
-grammar US-ASCII:ver<0.0.1>:auth<R Schmidt (ronaldxs@software-path.com)> {
+grammar US-ASCII:ver<0.1.0>:auth<R Schmidt (ronaldxs@software-path.com)> {
     token alpha     { <[A..Za..z]> }
     token upper     { <[A..Z]> }
     token lower     { <[a..z]> }
@@ -33,7 +33,7 @@ grammar US-ASCII:ver<0.0.1>:auth<R Schmidt (ronaldxs@software-path.com)> {
 # if uou are not using inheritance then US-ASCII::alpha as above is
 # easier to read then US-ASCII::ALPHA.  You might want to inherit the
 # rules and not overwrite the builtins as provided below.
-grammar US-ASCII-UC {
+grammar US-ASCII-UC:ver<0.1.0>:auth<R Schmidt (ronaldxs@software-path.com)> {
     token ALPHA     { <.US-ASCII::alpha> }
     token UPPER     { <.US-ASCII::upper> }
     token LOWER     { <.US-ASCII::lower> }
