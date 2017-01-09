@@ -1,0 +1,13 @@
+{
+    "perl" : "6.c",
+    "name" : "US-ASCII",
+    "version" : "0.1.0",
+    "description" : "US-ASCII restricted character classes and related.",
+    "authors" : [ "Ron Schmidt" ],
+    "provides" : {
+        "US-ASCII"
+    },
+    "depends" : [ ],
+    "resources" : [ ],
+    "source-url" : "git@github.com:ronaldxs/Perl6-US-ASCII.git"
+}
