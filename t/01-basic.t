@@ -19,6 +19,7 @@ my %charset-str =
     digit   =>  $([~] @digit-r),
     punct   =>  q<!"#%&'()*,-./:;?@[\]_{}>,
     xdigit  =>  (@digit-r, 'A' .. 'F', 'a' .. 'f').flat.join,
+    hexdig  =>  (@digit-r, 'A' .. 'F').flat.join,
     alpha   =>  (@upper-r, @lower-r).flat.join,
     alnum   =>  (@digit-r, @upper-r, @lower-r).flat.join,
     blank   =>  "\t ",
@@ -39,7 +40,7 @@ my %charset-str =
     ),
 ;
 
-plan 24;
+plan 26;
 
 # should be able to loop with interpolation but ...
 # grammar g { token t { <[2]> } }; say so "2" ~~ /<g::t>/; my $rname = "t"; say so "2" ~~ /<g::($rname)>/
@@ -55,6 +56,8 @@ is $latin-chars.comb(/<US-ASCII::digit>/).join, %charset-str< digit >,
     'digit correct US-ASCII char subset';
 is $latin-chars.comb(/<US-ASCII::xdigit>/).join, %charset-str< xdigit >,
     'xdigit correct US-ASCII char subset';
+is $latin-chars.comb(/<US-ASCII::hexdig>/).join, %charset-str< hexdig >,
+    'hexdig correct US-ASCII char subset';
 is $latin-chars.comb(/<US-ASCII::alnum>/).join, %charset-str< alnum >,
     'alnum correct US-ASCII char subset';
 is $latin-chars.comb(/<US-ASCII::punct>/).join, %charset-str< punct >,
@@ -69,6 +72,7 @@ is $latin-chars.comb(/<US-ASCII::print>/).join, %charset-str< print >,
     'print correct US-ASCII char subset';
 is $latin-chars.comb(/<US-ASCII::cntrl>/).join, %charset-str< cntrl >,
     'cntrl correct US-ASCII char subset';
+
 grammar ascii-by-count is US-ASCII-UC {
     token alpha-c   { ^ <-ALPHA>*
         [ <ALPHA> <-ALPHA>* ]   **  { %charset-str< alpha >.chars }
@@ -84,6 +88,9 @@ grammar ascii-by-count is US-ASCII-UC {
     $ }
     token xdigit-c  { ^ <-XDIGIT>*
         [ <XDIGIT> <-XDIGIT>* ] **  { %charset-str< xdigit >.chars }
+    $ }
+    token hexdig-c  { ^ <-HEXDIG>*
+        [ <HEXDIG> <-HEXDIG>* ] **  { %charset-str< hexdig >.chars }
     $ }
     token alnum-c   { ^ <-ALNUM>*
         [ <ALNUM> <-ALNUM>* ]   **  { %charset-str< alnum >.chars }
@@ -142,6 +149,13 @@ subtest {
     ok %charset-str< xdigit > ~~ /<ascii-by-count::xdigit-c>/,
         'XDIGIT subset has right elements';
 }, 'XDIGIT char class';
+
+subtest {
+    ok $latin-chars ~~ /<ascii-by-count::hexdig-c>/,
+        'HEXDIG subset has right size';
+    ok %charset-str< hexdig > ~~ /<ascii-by-count::hexdig-c>/,
+        'HEXDIG subset has right elements';
+}, 'HEXDIG char class';
 
 subtest {
     ok $latin-chars ~~ /<ascii-by-count::alnum-c>/,
