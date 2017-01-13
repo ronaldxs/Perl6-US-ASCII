@@ -23,8 +23,8 @@ my %charset-str =
     alpha   =>  (@upper-r, @lower-r).flat.join,
     alnum   =>  (@digit-r, @upper-r, @lower-r).flat.join,
     blank   =>  "\t ",
-    space   =>  "\t\n\x[b]\x[c]\r ",
-    cntrl   =>  ( chr(0) .. chr(0xf), chr(0x7f) ).flat.join
+    space   =>  "\t\n\x[0B]\x[0C]\r ",
+    cntrl   =>  ( chr(0) .. chr(0x0F), chr(0x7F) ).flat.join
 ;
 %charset-str.append:
     (   graph   =>  (
@@ -38,9 +38,10 @@ my %charset-str =
             %charset-str< space >.comb,
         ).flat.sort.join
     ),
+    (   vchar =>    (chr(0x21) .. chr(0x7E)).join   ),
 ;
 
-plan 26;
+plan 29;
 
 # should be able to loop with interpolation but ...
 # grammar g { token t { <[2]> } }; say so "2" ~~ /<g::t>/; my $rname = "t"; say so "2" ~~ /<g::($rname)>/
@@ -72,6 +73,8 @@ is $latin-chars.comb(/<US-ASCII::print>/).join, %charset-str< print >,
     'print correct US-ASCII char subset';
 is $latin-chars.comb(/<US-ASCII::cntrl>/).join, %charset-str< cntrl >,
     'cntrl correct US-ASCII char subset';
+is $latin-chars.comb(/<US-ASCII::vchar>/).join, %charset-str< vchar >,
+    'vchar correct US-ASCII char subset';
 
 grammar ascii-by-count is US-ASCII-UC {
     token alpha-c   { ^ <-ALPHA>*
@@ -112,6 +115,15 @@ grammar ascii-by-count is US-ASCII-UC {
     $ }
     token cntrl-c   { ^ <-CNTRL>*
         [ <CNTRL> <-CNTRL>* ]   **  { %charset-str< cntrl >.chars }
+    $ }
+    token vchar-c   { ^ <-VCHAR>*
+        [ <VCHAR> <-VCHAR>* ]   **  { %charset-str< vchar >.chars }
+    $ }
+
+    token abnf-named { <+HTAB +DQUOTE> }
+
+    token abnf-named-c { ^ <- abnf-named>*
+        [ <abnf-named> <- abnf-named>* ] ** 2
     $ }
 }
 
@@ -205,3 +217,17 @@ subtest {
     ok %charset-str< cntrl > ~~ /<ascii-by-count::cntrl-c>/,
         'CNTRL subset has right elements';
 }, 'CNTRL char class';
+
+subtest {
+    ok $latin-chars ~~ /<ascii-by-count::vchar-c>/,
+        'VCHAR subset has right size';
+    ok %charset-str< vchar > ~~ /<ascii-by-count::vchar-c>/,
+        'CNTRL subset has right elements';
+}, 'CNTRL char class';
+
+subtest {
+    ok $latin-chars ~~ /<ascii-by-count::abnf-named-c>/,
+        'ABNF named characters match has right size';
+    ok "\t\"" ~~ /<ascii-by-count::abnf-named-c>/,
+        'ABNF named characters has right elements';
+}, 'some ABNF named characters';

@@ -62,4 +62,15 @@ Almost all are based on predefined Perl 6 character classes.
 * space / SPACE
 * print / PRINT
 * cntrl / CNTRL
+* vchar / VCHAR # ABNF \x[21]..\x[7E] visible (printing) chars
+
+## Rules (token) in US-ASCII-UC only useful for ABNF
+
+* HTAB
+* DQUOTE
+
+# To do
+
+There are a few more Perl 6 predefined classes and ABNF rules
+that could be added.
 

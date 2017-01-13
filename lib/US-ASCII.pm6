@@ -20,6 +20,7 @@ grammar US-ASCII:ver<0.1.0>:auth<R Schmidt (ronaldxs@software-path.com)>
     token space     { <+_space> }
     token print     { <+_punct +_space +[0..9A..Za..z]> }
     token cntrl     { <[\x[0]..\x[f]]+[\x[7f]]> }
+    token vchar     { <[\x[21]..\x[7E]]> }
 
 #   crlf not working yet
 #    token crlf      { <CR><LF> }
@@ -49,7 +50,12 @@ grammar US-ASCII-UC:ver<0.1.0>:auth<R Schmidt (ronaldxs@software-path.com)>
     token SPACE     { <.US-ASCII::space> }
     token PRINT     { <.US-ASCII::print> }
     token CNTRL     { <.US-ASCII::cntrl> }
+    token VCHAR     { <.US-ASCII::vchar> }
 #    token CRLF      { <.US-ASCII::crlf>  }
+
+    # believied only useful for ABNF grammar
+    token HTAB      { <[\t]> }
+    token DQUOTE    { <["]> }
 
     constant ASCII-SET = US-ASCII::charset;
 }
