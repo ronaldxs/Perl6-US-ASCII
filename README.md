@@ -9,13 +9,13 @@ use US-ASCII;
 say so /<US-ASCII::alpha>/ for <A À 9>; # True, False, False
 
 grammar IPv6 is US-ASCII-UC {
-  token h16 { <HEXDIG> ** 1..4}
+    token h16 { <HEXDIG> ** 1..4}
 }
 # False, True, True, False, False
 say so IPv6.parse($_, :rule<h16>) for ('DÉÃD', 'BEEF', 'A0', 'A๐', 'a0');
 
 grammar SQL_92 is US-ASCII-UC {
-  token unsigned-integer { <DIGIT>+ }
+    token unsigned-integer { <DIGIT>+ }
 }
 # True, False
 say so SQL_92.parse($_, :rule<unsigned-integer>) for ('42', '4２');
