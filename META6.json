@@ -6,7 +6,8 @@
     "authors" : [ "Ron Schmidt" ],
     "provides" : {
         "US-ASCII"      :   "lib/US-ASCII.pm6",
-        "US-ASCII-UC"   :   "lib/US-ASCII.pm6"
+        "US-ASCII-UC"   :   "lib/US-ASCII.pm6",
+        "US-ASCII::ABNF::Common" : "lib/US-ASCII/ABNF/Common.pm6"
     },
     "depends" : [ ],
     "resources" : [ ],
