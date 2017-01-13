@@ -30,12 +30,12 @@ avoid readability issues with long upper case names.  The US-ASCII
 grammar defines most character classes in lower case for direct use without inheritance as in the first SYNOPSIS example. The US-ASCII-UC grammar defines all character classes in upper case and is intended
 for grammars that inherit. Inheriting upper case named rules/tokens
 does not override the predefined Perl 6 character classes and
-conforms better to RFC 5234 ABNF facilitating use with grammars of
+conforms better to RFC 5234 ABNF, facilitating use with grammars of
 other internet standards based on that RFC.  Unlike RFC 5234, and
 some existing Perl 6 implementations of it, US-ASCII rules are very rarely defined by ordinal values and mostly use, hopefully clearer,
 Perl6 character ranges and names.
 
-# Rules (token)
+# Named Regex (token)
 
 ## Shared by both US-ASCII and US-ASCII-UC
 
@@ -45,7 +45,7 @@ Perl6 character ranges and names.
 * BIT ('0' or '1')
 * CHAR (Anything in US-ASCII other than NUL)
 
-## Rules (token) in differing case in US-ASCII and US-ASCII-UC
+## Named Regex (token) in differing case in US-ASCII and US-ASCII-UC
 
 Almost all are based on predefined Perl 6 character classes.
 
@@ -64,7 +64,7 @@ Almost all are based on predefined Perl 6 character classes.
 * cntrl / CNTRL
 * vchar / VCHAR # ABNF \x[21]..\x[7E] visible (printing) chars
 
-## Rules (token) in US-ASCII-UC only useful for ABNF
+## Named Regex (token) in US-ASCII-UC only useful for ABNF
 
 * HTAB
 * DQUOTE
