@@ -1,11 +1,11 @@
 use US-ASCII::ABNF::Common;
 
-package US-ASCII-C {
+package US-ASCII-C:ver<0.1.0> {
     # unicode basic latin is US-ASCII
     constant charset = set chr(0) .. chr(127);
 }
 
-role US-ASCII:ver<0.1.0>:auth<R Schmidt (ronaldxs@software-path.com)>
+role US-ASCII:ver<0.1.2>:auth<R Schmidt (ronaldxs@software-path.com)>
     does US-ASCII::ABNF::Common
     is Grammar
 {
@@ -39,7 +39,7 @@ role US-ASCII:ver<0.1.0>:auth<R Schmidt (ronaldxs@software-path.com)>
 # if uou are not using inheritance then US-ASCII::alpha as above is
 # easier to read then US-ASCII::ALPHA.  You might want to inherit the
 # rules and not overwrite the builtins as provided below.
-role US-ASCII-UC:ver<0.1.0>:auth<R Schmidt (ronaldxs@software-path.com)> 
+role US-ASCII-UC:ver<0.1.2>:auth<R Schmidt (ronaldxs@software-path.com)> 
     does US-ASCII::ABNF::Common
 {
     token ALPHA     { <.US-ASCII::alpha> }
