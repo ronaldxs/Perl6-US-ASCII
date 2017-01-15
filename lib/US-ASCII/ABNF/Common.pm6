@@ -1,5 +1,5 @@
 # elements of ABNF/RFC 5234 that retain legibility in all caps
-unit grammar US-ASCII::ABNF::Common:ver<0.1.0>:auth<R Schmidt (ronaldxs@software-path.com)>;
+unit role US-ASCII::ABNF::Common:ver<0.1.0>:auth<R Schmidt (ronaldxs@software-path.com)>;
 
 token LF    { <[\c[LF]]> }
 token CR    { <[\c[CR]]> }

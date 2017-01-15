@@ -76,7 +76,7 @@ is $latin-chars.comb(/<US-ASCII::cntrl>/).join, %charset-str< cntrl >,
 is $latin-chars.comb(/<US-ASCII::vchar>/).join, %charset-str< vchar >,
     'vchar correct US-ASCII char subset';
 
-grammar ascii-by-count is US-ASCII-UC {
+grammar ascii-by-count does US-ASCII-UC {
     token alpha-c   { ^ <-ALPHA>*
         [ <ALPHA> <-ALPHA>* ]   **  { %charset-str< alpha >.chars }
     $ }

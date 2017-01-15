@@ -19,7 +19,7 @@ is $latin-chars.comb( /
 # tricky / having problems
 # ok "\c[CR]\c[LF]" ~~ /<US-ASCII::CR>/, 'CRLF';
 
-grammar test-ascii-inherit is US-ASCII-UC {
+grammar test-ascii-inherit does US-ASCII-UC {
     token abnf-named { <+LF +CR +SP +BIT> }
 
     token abnf-named-c { ^ <- abnf-named>*
