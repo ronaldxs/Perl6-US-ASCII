@@ -1,7 +1,7 @@
 {
     "perl" : "6.c",
     "name" : "US-ASCII",
-    "version" : "0.1.0",
+    "version" : "0.1.2",
     "description" : "US-ASCII restricted character classes and related.",
     "authors" : [ "Ron Schmidt" ],
     "provides" : {
