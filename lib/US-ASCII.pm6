@@ -1,13 +1,7 @@
 use US-ASCII::ABNF::Common;
 
-package US-ASCII-C:ver<0.1.0> {
-    # unicode basic latin is US-ASCII
-    constant charset = set chr(0) .. chr(127);
-}
-
-role US-ASCII:ver<0.1.2>:auth<R Schmidt (ronaldxs@software-path.com)>
+grammar US-ASCII:ver<0.1.3>:auth<R Schmidt (ronaldxs@software-path.com)>
     does US-ASCII::ABNF::Common
-    is Grammar
 {
     token alpha     { <[A..Za..z]> }
     token upper     { <[A..Z]> }
@@ -33,12 +27,13 @@ role US-ASCII:ver<0.1.2>:auth<R Schmidt (ronaldxs@software-path.com)>
     # todo ww, wb others?
     # token NL ??
 
-    method charset { US-ASCII-C::charset }
+    constant charset = set chr(0) .. chr(127);
 }
 
 # if uou are not using inheritance then US-ASCII::alpha as above is
-# easier to read then US-ASCII::ALPHA.  You might want to inherit the
-# rules and not overwrite the builtins as provided below.
+# easier to read than US-ASCII::ALPHA.  With the role below you can
+# compose upper case names of the same regexes/tokens without overwriting
+# builtin classes.
 role US-ASCII-UC:ver<0.1.2>:auth<R Schmidt (ronaldxs@software-path.com)> 
     does US-ASCII::ABNF::Common
 {
@@ -62,5 +57,6 @@ role US-ASCII-UC:ver<0.1.2>:auth<R Schmidt (ronaldxs@software-path.com)>
     token HTAB      { <[\t]> }
     token DQUOTE    { <["]> }
 
-    method charset { US-ASCII-C::charset }
+    # invoke with autopun as US-ASCII-UC.charset
+    method charset { US-ASCII::charset }
 }
