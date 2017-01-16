@@ -27,8 +27,8 @@ This module provides regex character classes restricted to ASCII
 including the predefined character classes of Perl 6 and some
 ABNF (RFC 5234) Core rules. The module defines two sets of
 named regexes to avoid readability issues with long upper case
-names.  The US-ASCII role/grammar defines most character classes
-in lower case for direct use without inheritance as in the
+names.  The US-ASCII grammar defines most character classes
+in lower case for direct use without composition as in the
 first SYNOPSIS example. The US-ASCII-UC role defines all character
 classes in upper case and is intended for composition into grammars.
 Composition of upper case named regex/tokens does not override the predefined Perl 6 character classes and conforms better to
@@ -36,7 +36,7 @@ RFC 5234 ABNF, facilitating use with grammars of other internet
 standards based on that RFC.  Unlike RFC 5234, and
 some existing Perl 6 implementations of it, US-ASCII rules are
 very rarely defined by ordinal values and mostly use,
-hopefully clearer, Perl6 character ranges and names.
+hopefully clearer, Perl 6 character ranges and names.
 
 # Named Regex (token)
 
