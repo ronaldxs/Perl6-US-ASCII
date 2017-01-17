@@ -34,7 +34,7 @@ grammar US-ASCII:ver<0.1.3>:auth<R Schmidt (ronaldxs@software-path.com)>
 # easier to read than US-ASCII::ALPHA.  With the role below you can
 # compose upper case names of the same regexes/tokens without overwriting
 # builtin classes.
-role US-ASCII-UC:ver<0.1.2>:auth<R Schmidt (ronaldxs@software-path.com)> 
+role US-ASCII-UC:ver<0.1.3>:auth<R Schmidt (ronaldxs@software-path.com)> 
     does US-ASCII::ABNF::Common
 {
     token ALPHA     { <.US-ASCII::alpha> }
