@@ -60,7 +60,7 @@ Almost all are based on predefined Perl 6 character classes.
 * hexdig / HEXDIG # ABNF 0..9A..F (but not a..f)
 * alnum / ALNUM
 * punct / PUNCT
-* graph / GRPAH
+* graph / GRAPH
 * blank / BLANK
 * space / SPACE
 * print / PRINT
