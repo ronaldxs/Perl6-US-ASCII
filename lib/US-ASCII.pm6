@@ -44,6 +44,15 @@ grammar US-ASCII:ver<0.1.4>:auth<R Schmidt (ronaldxs@software-path.com)>
     our token PRINT     is export(:UC)  { <US-ASCII::print>     }
     our token CNTRL     is export(:UC)  { <US-ASCII::cntrl>     }
     our token VCHAR     is export(:UC)  { <US-ASCII::vchar>     }
+    
+    our token LF        is export(:UC)  { <US-ASCII::LF>        }
+    our token CR        is export(:UC)  { <US-ASCII::CR>        }
+    our token SP        is export(:UC)  { <US-ASCII::SP>        }
+    our token BIT       is export(:UC)  { <US-ASCII::BIT>       }
+    our token CHAR      is export(:UC)  { <US-ASCII::CHAR>      }
+    
+    our token HTAB      is export(:UC)  { <[\t]> }
+    our token DQUOTE    is export(:UC)  { <["]>  }
 }
 
 # if you are not using inheritance then US-ASCII::alpha as above is
