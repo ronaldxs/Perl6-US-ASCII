@@ -25,6 +25,7 @@ grammar US-ASCII:ver<0.1.5>:auth<R Schmidt (ronaldxs@software-path.com)>
     token wb        { <?after <US-ASCII::alnum>><!US-ASCII::alnum>  |
                       <!after <US-ASCII::alnum>><?US-ASCII::alnum>
                     }
+    token ww        { <?after <US-ASCII::alnum>><?US-ASCII::alnum>  }
 
 #   crlf not working yet
 #    token crlf      { <CR><LF> }
@@ -48,7 +49,8 @@ grammar US-ASCII:ver<0.1.5>:auth<R Schmidt (ronaldxs@software-path.com)>
     our token PRINT     is export(:UC)  { <.US-ASCII::print>     }
     our token CNTRL     is export(:UC)  { <.US-ASCII::cntrl>     }
     our token VCHAR     is export(:UC)  { <.US-ASCII::vchar>     }
-    our token WB        is export(:UC)  { <.US-ASCII::wb>     }
+    our token WB        is export(:UC)  { <.US-ASCII::wb>        }
+    our token WW        is export(:UC)  { <.US-ASCII::ww>        }
     
     our token LF        is export(:UC)  { <.US-ASCII::LF>        }
     our token CR        is export(:UC)  { <.US-ASCII::CR>        }
@@ -83,6 +85,7 @@ role US-ASCII-UC:ver<0.1.4>:auth<R Schmidt (ronaldxs@software-path.com)>
     token VCHAR     { <.US-ASCII::vchar> }
 #    token CRLF      { <.US-ASCII::crlf>  }
     token WB        { <.US-ASCII::wb> }
+    token WW        { <.US-ASCII::ww> }
 
     # believied only useful for ABNF grammar
     token HTAB      { <[\t]> }

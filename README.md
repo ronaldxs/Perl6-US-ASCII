@@ -73,6 +73,7 @@ Almost all are based on predefined Perl 6 character classes.
 * cntrl / CNTRL
 * vchar / VCHAR # ABNF \x[21]..\x[7E] visible (printing) chars
 * wb / WB
+* ww / WW
 
 ## Named Regex (token) in US-ASCII-UC/(import tag :UC) only useful for ABNF
 
