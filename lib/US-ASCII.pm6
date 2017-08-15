@@ -29,7 +29,7 @@ grammar US-ASCII:ver<0.1.6>:auth<R Schmidt (ronaldxs@software-path.com)>
 
 #   crlf not working yet
 #    token crlf      { <CR><LF> }
-    # todo ww, wb others?
+    # todo CRLF CTL (duplicate) LWSP OCTET WSP 
     # token NL ??
 
     constant charset = set chr(0) .. chr(127);
