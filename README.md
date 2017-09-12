@@ -145,7 +145,7 @@ Named Regex (token) in US-ASCII-ABNF/(import tag :ABNF) only useful for ABNF
 Backward compatibility break with CR, LF, SP.
 ---------------------------------------------
 
-In 0.1.X releases CR, LF and SP were provided by the US-ASCII grammar. They are now treated as ABNF Core only tokens as they can easily enough be coded in Perl 6 using equivalents noted in the table above.
+In 0.1.X releases CR, LF and SP were provided by the US-ASCII grammar. They are now treated as ABNF Core only tokens, as they can be easily enough coded in Perl 6 using equivalents noted in the table above.
 
 ABNF Core
 =========
