@@ -177,3 +177,6 @@ scope specifier for the declarations and came across [roast issue
 the choice ambiguous and export of `my token` currently the best of
 the three.
 
+Status
+======
+[![Build Status](https://travis-ci.org/ronaldxs/Perl6-US-ASCII.png)](https://travis-ci.org/ronaldxs/Perl6-US-ASCII)
