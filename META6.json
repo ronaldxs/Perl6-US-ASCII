@@ -4,7 +4,7 @@
     "name" : "US-ASCII",
     "license" : "Artistic-2.0",
     "version" : "0.6.2",
-    "description" : "US-ASCII restricted character classes and related.",
+    "description" : "US-ASCII restricted character classes from Perl6 and Core ABNF.",
     "authors" : [ "Ron Schmidt" ],
     "provides" : {
         "US-ASCII"      :   "lib/US-ASCII.pm6",
