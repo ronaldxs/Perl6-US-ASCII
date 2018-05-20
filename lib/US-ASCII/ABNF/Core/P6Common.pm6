@@ -4,7 +4,7 @@
 
 # internal use - you probably don't want to use this directly
 
-role US-ASCII::ABNF::Core::P6Common:ver<0.1.1>:auth<R Schmidt (ronaldxs@software-path.com)> {
+role US-ASCII::ABNF::Core::P6Common:ver<0.1.2>:auth<R Schmidt (ronaldxs@software-path.com)> {
 
 token alpha     { <[A..Za..z]> }
 token digit     { <[0..9]> }
@@ -15,6 +15,8 @@ token vchar     { <[\x[21]..\x[7E]]> }
 
 }
 
-# extending grammars with "does ...::P6Common" overrides
+# extending grammars with "(is|does) ...::P6Common" overrides
 # default p6 character classes so use grammar below to avoid leakage
-grammar US-ASCII::ABNF::Core::P6Common_g:ver<0.1.1>:auth<R Schmidt (ronaldxs@software-path.com)> does US-ASCII::ABNF::Core::P6Common {}
+# instead of is|does - use package qualifier
+# like use ...::P6Common_g; /<...P6Common-g::alpha>/
+grammar US-ASCII::ABNF::Core::P6Common-g:ver<0.1.2>:auth<R Schmidt (ronaldxs@software-path.com)> does US-ASCII::ABNF::Core::P6Common {}

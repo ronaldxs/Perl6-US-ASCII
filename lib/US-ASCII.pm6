@@ -3,7 +3,7 @@ use US-ASCII::ABNF::Core::P6Common;
 use US-ASCII::ABNF::Core::Only;
 use US-ASCII::ABNF::Core::More;
 
-grammar US-ASCII:ver<0.6.1>:auth<R Schmidt (ronaldxs@software-path.com)>
+grammar US-ASCII:ver<0.6.2>:auth<R Schmidt (ronaldxs@software-path.com)>
     does US-ASCII::ABNF::Core::Common
     does US-ASCII::ABNF::Core::P6Common
 {
@@ -11,13 +11,14 @@ grammar US-ASCII:ver<0.6.1>:auth<R Schmidt (ronaldxs@software-path.com)>
     token lower     { <[a..z]> }
     token xdigit    { <[0..9A..Fa..f]> }
     token alnum     { <[0..9A..Za..z]> }
-    # see RT #130527 for why we might need _punct and _space
+    # see RT #130527 for why we might need _punct
     token _punct    { <[\-!"#%&'()*,./:;?@[\\\]_{}]> }
     token punct     { <+_punct> }
     token graph     { <+_punct +[0..9A..Za..z]> }
-    token _space    { "\c[CR]\c[LF]" || <[\t\c[VT]\c[FF]\c[LF]\c[CR]\ ]> }
-    token space     { <+_space> }
-    token print     { <+_punct +_space +[0..9A..Za..z]> }
+    token space-cc  { <[\t\c[VT]\c[FF]\c[LF]\c[CR]\ ]> }
+    token space     { "\c[CR]\c[LF]" | <+space-cc> }
+    token print-cc  { <+_punct +space-cc +[0..9A..Za..z]> }
+    token print     { "\c[CR]\c[LF]" | <+print-cc> }
 
     token wb        { <?after <US-ASCII::alnum>><!US-ASCII::alnum>  |
                       <!after <US-ASCII::alnum>><?US-ASCII::alnum>
@@ -27,45 +28,45 @@ grammar US-ASCII:ver<0.6.1>:auth<R Schmidt (ronaldxs@software-path.com)>
     constant charset = set chr(0) .. chr(127);
 
     # should be nicer answer than hard coding package name
-    our token ALPHA     is export(:UC :ALL)     { <.US-ASCII::alpha>     }
-    our token UPPER     is export(:UC :ALL)     { <.US-ASCII::upper>     }
-    our token LOWER     is export(:UC :ALL)     { <.US-ASCII::lower>     }
-    our token DIGIT     is export(:UC :ALL)     { <.US-ASCII::digit>     }
-    our token XDIGIT    is export(:UC :ALL)     { <.US-ASCII::xdigit>    }
-    our token HEXDIG    is export(:UC :ALL)     { <.US-ASCII::hexdig>    }
-    our token ALNUM     is export(:UC :ALL)     { <.US-ASCII::alnum>     }
-    our token PUNCT     is export(:UC :ALL)     { <.US-ASCII::punct>     }
-    our token GRAPH     is export(:UC :ALL)     { <.US-ASCII::graph>     }
-    our token BLANK     is export(:UC :ALL)     { <.US-ASCII::blank>     }
-    our token SPACE     is export(:UC :ALL)     { <.US-ASCII::space>     }
-    our token PRINT     is export(:UC :ALL)     { <.US-ASCII::print>     }
-    our token CNTRL     is export(:UC :ALL)     { <.US-ASCII::cntrl>     }
-    our token VCHAR     is export(:UC :ALL)     { <.US-ASCII::vchar>     }
-    our token WB        is export(:UC :ALL)     { <.US-ASCII::wb>        }
-    our token WW        is export(:UC :ALL)     { <.US-ASCII::ww>        }
+    my token ALPHA    is export(:UC)    { <.US-ASCII::alpha>     }
+    my token UPPER    is export(:UC)    { <.US-ASCII::upper>     }
+    my token LOWER    is export(:UC)    { <.US-ASCII::lower>     }
+    my token DIGIT    is export(:UC)    { <.US-ASCII::digit>     }
+    my token XDIGIT   is export(:UC)    { <.US-ASCII::xdigit>    }
+    my token HEXDIG   is export(:UC)    { <.US-ASCII::hexdig>    }
+    my token ALNUM    is export(:UC)    { <.US-ASCII::alnum>     }
+    my token PUNCT    is export(:UC)    { <.US-ASCII::punct>     }
+    my token GRAPH    is export(:UC)    { <.US-ASCII::graph>     }
+    my token BLANK    is export(:UC)    { <.US-ASCII::blank>     }
+    my token SPACE    is export(:UC)    { <.US-ASCII::space>     }
+    my token PRINT    is export(:UC)    { <.US-ASCII::print>     }
+    my token CNTRL    is export(:UC)    { <.US-ASCII::cntrl>     }
+    my token VCHAR    is export(:UC)    { <.US-ASCII::vchar>     }
+    my token WB       is export(:UC)    { <.US-ASCII::wb>        }
+    my token WW       is export(:UC)    { <.US-ASCII::ww>        }
 
-    our token CRLF      is export(:UC :ALL)     { <.US-ASCII::CRLF>      }
-    our token BIT       is export(:UC :ALL)     { <.US-ASCII::BIT>       }
-    our token CHAR      is export(:UC :ALL)     { <.US-ASCII::CHAR>      }
+    my token CRLF     is export(:UC)    { <.US-ASCII::CRLF>      }
+    my token BIT      is export(:UC)    { <.US-ASCII::BIT>       }
+    my token CHAR     is export(:UC)    { <.US-ASCII::CHAR>      }
 
     my grammar Core-More does US-ASCII::ABNF::Core::More {};
-    our token CTL       is export(:ABNF :ALL)   { <.Core-More::CTL>  }
-    our token WSP       is export(:ABNF :ALL)   { <.Core-More::WSP>  }
+    my token CTL      is export(:ABNF)  { <.Core-More::CTL>  }
+    my token WSP      is export(:ABNF)  { <.Core-More::WSP>  }
 
     my grammar Core-Only does US-ASCII::ABNF::Core::Only {};
-    our token CR        is export(:ABNF :ALL)   { <.Core-Only::CR>      }
-    our token DQUOTE    is export(:ABNF :ALL)   { <.Core-Only::DQUOTE>  }
-    our token HTAB      is export(:ABNF :ALL)   { <.Core-Only::HTAB>    }
-    our token LF        is export(:ABNF :ALL)   { <.Core-Only::LF>      }
-    our token SP        is export(:ABNF :ALL)   { <.Core-Only::SP>      }
-    our token OCTET     is export(:ABNF :ALL)   { <.Core-Only::OCTET>   }
-} 
+    my token CR       is export(:ABNF)  { <.Core-Only::CR>      }
+    my token DQUOTE   is export(:ABNF)  { <.Core-Only::DQUOTE>  }
+    my token HTAB     is export(:ABNF)  { <.Core-Only::HTAB>    }
+    my token LF       is export(:ABNF)  { <.Core-Only::LF>      }
+    my token SP       is export(:ABNF)  { <.Core-Only::SP>      }
+    my token OCTET    is export(:ABNF)  { <.Core-Only::OCTET>   }
+}
 
 # if you are not using inheritance then US-ASCII::alpha as above is
 # easier to read than US-ASCII::ALPHA.  With the role below you can
 # compose upper case names of the same regexes/tokens without overwriting
 # builtin character classes.
-role US-ASCII-UC:ver<0.6.1>:auth<R Schmidt (ronaldxs@software-path.com)> 
+role US-ASCII-UC:ver<0.6.2>:auth<R Schmidt (ronaldxs@software-path.com)>
     does US-ASCII::ABNF::Core::Common
 {
     token ALPHA     { <.US-ASCII::alpha> }
@@ -90,7 +91,7 @@ role US-ASCII-UC:ver<0.6.1>:auth<R Schmidt (ronaldxs@software-path.com)>
     method charset { US-ASCII::charset }
 }
 
-role US-ASCII-ABNF:ver<0.6.1>:auth<R Schmidt (ronaldxs@software-path.com)> 
+role US-ASCII-ABNF:ver<0.6.2>:auth<R Schmidt (ronaldxs@software-path.com)>
     does US-ASCII-UC
     does US-ASCII::ABNF::Core::Only
     does US-ASCII::ABNF::Core::More
@@ -200,19 +201,17 @@ SP      | ' '
 WSP     | US-ASCII blank / BLANK
 =end table
 
-=head2 Backward compatibility break with CR, LF, SP.
-
-In 0.1.X releases CR, LF and SP were provided by the US-ASCII grammar.  They
-are now treated as ABNF Core only tokens, as they can be easily enough coded
-in Perl 6 using equivalents noted in the table above.
-
-
 =head1 ABNF Core
 
 Since ABNF is defined using the ASCII character set the distribution includes
 an US-ASCII::ABNF::Core module defining the tokens for ABNF Core as enumerated
 in RFC 5234.  See that module's documentation for more detail.
 
+=head2 Backward compatibility break with CR, LF, SP.
+
+In 0.1.X releases CR, LF and SP were provided by the US-ASCII grammar.  They
+are now treated as ABNF Core only tokens, as they can be easily enough coded
+in Perl 6 using equivalents noted in the table above.
 
 =head1 LIMITATIONS
 
@@ -220,8 +219,27 @@ Perl 6 strings treat C<"\c[CR]\c[LF]"> as a single grapheme and that sequence
 will not match either C< <CR>> or C< <LF>> but will match C< <CRLF>>.
 
 The Unicode C<\c[KELVIN SIGN]> at code point C<\x[212A]> is normalized by
-Perl 6 string processing to the letter 'K' and C< say so "\x[212B]" ~~ /K/ >
+Perl 6 string processing to the letter 'K' and C< say so "\x[212A]" ~~ /K/ >
 prints C<True>.  Regex tests that match the letter K, including US-ASCII
 tokens, may thus appear to match the Kelvin sign.
+
+=head1 Export of tokens
+
+Export of tokens and other C<Regex> types is not formally documented.
+Regex(es) are derived from C<Method> which is in turn derived from
+C<Routine>.  C<Sub> is also derived from C<Routine> and well
+documented and established as exportable including lexical
+C<my sub>.  There is a roast example of exporting an operator
+method in S06-operator-overloading/infix.t and also mention of
+method export in a Dec 12, 2009 advent blog post.  Further
+documentation and test of export on C<Method> and C<Regex> types is
+of interest to these modules and project.
+
+This implementation uses C<my>/lexical scope to export tokens the
+same way a module would export a C<my sub>.  I looked into C<our>
+scope and no scope specifier for the declarations and came across
+L<roast issue #426|https://github.com/perl6/roast/issues/426>,
+which I felt made the choice ambiguous and export of C<my token>
+currently the best of the three.
 
 =end pod

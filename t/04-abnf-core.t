@@ -32,7 +32,7 @@ plan 41;
 # grammar g { token t { <[2]> } }; say so "2" ~~ /<g::t>/; my $rname = "t"; say so "2" ~~ /<g::($rname)>/
 # see also https://docs.perl6.org/language/packages#index-entry-%3A%3A%28%29
 
-grammar ABNF-Core does US-ASCII::ABNF::Core {};
+grammar ABNF-Core is US-ASCII::ABNF::Core {};
 
 sub test-role-and-import(
     Regex $role-regex, Regex $import-regex,
@@ -102,4 +102,5 @@ ok "  \t  " ~~ /^<ABNF-Core::LWSP>$/, 'LWSP just blanks';
 nok "  \t  \c[CR]\c[LF]" ~~ /^<ABNF-Core::LWSP>$/, 'LWSP one line';
 nok "  \c[CR] " ~~ /^<ABNF-Core::LWSP>$/, 'LWSP with just carriage return';
 nok "  \c[LF] " ~~ /^<ABNF-Core::LWSP>$/, 'LWSP with just line feed';
+
 
