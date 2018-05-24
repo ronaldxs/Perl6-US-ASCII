@@ -10,7 +10,11 @@
         "US-ASCII"      :   "lib/US-ASCII.pm6",
         "US-ASCII-UC"   :   "lib/US-ASCII.pm6",
         "US-ASCII::ABNF::Core" : "lib/US-ASCII/ABNF/Core.pm6",
-        "US-ASCII::ABNF::Core::Common" : "lib/US-ASCII/ABNF/Core/Common.pm6"
+        "US-ASCII::ABNF::Core::Common" : "lib/US-ASCII/ABNF/Core/Common.pm6",
+        "US-ASCII::ABNF::Core::P6Common" :
+            "lib/US-ASCII/ABNF/Core/P6Common.pm6",
+        "US-ASCII::ABNF::Core::P6Common-g" :
+            "lib/US-ASCII/ABNF/Core/P6Common.pm6"
     },
     "depends" : [ ],
     "resources" : [ ],
