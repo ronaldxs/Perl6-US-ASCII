@@ -156,7 +156,7 @@ do not include underscore, '_' in this module.
 Unlike RFC 5234, and some existing Perl 6 implementations of it, US-ASCII rules
 are very rarely defined by ordinal values and mostly use, hopefully clearer,
 Perl 6 character ranges and names.  Actually you could code most of these
-rules/tokens easily enough yourself as demonstrated below but these modules
+rules/tokens easily enough yourself as demonstrated below but the modules
 may still help collect and organize them for reuse.
 
 =begin code :lang<perl6>
