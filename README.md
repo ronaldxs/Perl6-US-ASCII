@@ -39,7 +39,7 @@ The distribution also includes an `US-ASCII::ABNF::Core` module with tokens for 
 
 The `US-ASCII-ABNF` role of the `US-ASCII` module extends `US-ASCII-UC` by defining all ABNF Core tokens including ones like DQUOTE that are trivially coded in Perl6 and others that are likely only to be useful for composition in grammars related to ABNF. For conformance with ABNF, `ALPHA` and `ALNUM` do not include underscore, '_' in this module.
 
-Unlike RFC 5234, and some existing Perl 6 implementations of it, US-ASCII rules are very rarely defined by ordinal values and mostly use, hopefully clearer, Perl 6 character ranges and names. Actually you could code all of these rules/tokens easily enough yourself as demonstrated below but these modules may still help collect and organize them for reuse.
+Unlike RFC 5234, and some existing Perl 6 implementations of it, US-ASCII rules are very rarely defined by ordinal values and mostly use, hopefully clearer, Perl 6 character ranges and names. Actually you could code most of these rules/tokens easily enough yourself as demonstrated below but these modules may still help collect and organize them for reuse.
 
 ```perl6
 my token DIGIT { <digit> & <:ascii> } # implemented with conjunction
