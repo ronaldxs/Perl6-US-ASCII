@@ -28,6 +28,6 @@
             "lib/US-ASCII/ABNF/Core/More.pm6"
     },
     "depends" : [ ],
-    "resources" : [ ]
+    "resources" : [ ],
     "source-url" : "git@github.com:ronaldxs/Perl6-US-ASCII.git"
 }
