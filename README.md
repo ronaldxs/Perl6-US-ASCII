@@ -183,3 +183,9 @@ Export of tokens and other `Regex` types is not formally documented. Regex(es) a
 
 This implementation uses `my`/lexical scope to export tokens the same way a module would export a `my sub`. I looked into `our` scope and no scope specifier for the declarations and came across [roast issue #426](https://github.com/perl6/roast/issues/426), which I felt made the choice ambiguous and export of `my token` currently the best of the three.
 
+Status
+======
+
+    [![Build Status](https://travis-ci.org/ronaldxs/Perl6-US-ASCII.png)](https://travis-ci.org/ronaldxs/Perl6-US-ASCII)
+    [![Build status](https://ci.appveyor.com/api/projects/status/github/ronaldsx/Perl6-US-ASCII?svg=true)](https://ci.appveyor.com/project/ronaldxs/Perl6-US-ASCII/branch/master)
+

@@ -280,4 +280,9 @@ L<roast issue #426|https://github.com/perl6/roast/issues/426>,
 which I felt made the choice ambiguous and export of C<my token>
 currently the best of the three.
 
+=head1 Status
+
+    [![Build Status](https://travis-ci.org/ronaldxs/Perl6-US-ASCII.png)](https://travis-ci.org/ronaldxs/Perl6-US-ASCII)
+    [![Build status](https://ci.appveyor.com/api/projects/status/github/ronaldsx/Perl6-US-ASCII?svg=true)](https://ci.appveyor.com/project/ronaldxs/Perl6-US-ASCII/branch/master)
+
 =end pod
