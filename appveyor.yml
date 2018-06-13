@@ -1,9 +1,11 @@
 # URI AppVeyor YAML control file
-# essentially copied from the GitHub PDF-p6 project
+# essentially copied from the GitHub p6-XML-XPATH project
 
 os: Visual Studio 2015
 
 platform: x64
+
+build: off
 
 install:
   - '"C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64'
