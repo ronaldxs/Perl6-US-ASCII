@@ -13,7 +13,7 @@ export readme_status
 
 README.md: lib/US-ASCII.pm6
 	$(POD6_TO_MD) lib/US-ASCII.pm6 >>$@
-	perl -i -pe 'print $$ENV{readme_status} if /SYNOPSIS/' $@
+	perl -i -pe 'print $$ENV{readme_status} if /^SYNOPSIS$$/' $@
 
 README-ABNF-Core.md: lib/US-ASCII/ABNF/Core.pm6
 	$(POD6_TO_MD) lib/US-ASCII/ABNF/Core.pm6 >$@
