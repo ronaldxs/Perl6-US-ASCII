@@ -133,11 +133,6 @@ Named Regex (token) in US-ASCII-ABNF/(import tag :ABNF) only useful for ABNF
 </tbody>
 </table>
 
-ABNF Core
-=========
-
-Since ABNF is defined using the ASCII character set the distribution includes an US-ASCII::ABNF::Core module defining the tokens for ABNF Core as enumerated in RFC 5234. See that module's documentation for more detail.
-
 US-ASCIIx import tag :POSIX
 ---------------------------
 
@@ -167,8 +162,13 @@ As previously mentioned for the `US-ASCII` module `ALPHA` and `ALNUM` include th
 
   * CNTRL
 
+ABNF Core
+=========
+
+Since ABNF is defined using the ASCII character set the distribution includes an US-ASCII::ABNF::Core module defining the tokens for ABNF Core as enumerated in RFC 5234. See that module's documentation for more detail.
+
 Backward compatibility break with CR, LF, SP.
----------------------------------------------
+=============================================
 
 In 0.1.X releases CR, LF and SP were provided by the US-ASCII grammar. They are now treated as ABNF Core only tokens, as they can be easily enough coded in Perl 6 using equivalents noted in the table above.
 

@@ -3,7 +3,7 @@ use _US-ASCII;
 use US-ASCII::ABNF::Core::Only;
 use US-ASCII::ABNF::Core::More;
 
-grammar US-ASCII:ver<0.6.5>:auth<R Schmidt (ronaldxs@software-path.com)>
+grammar US-ASCII:ver<0.6.6>:auth<R Schmidt (ronaldxs@software-path.com)>
     is _US-ASCII
 {
     token alpha_x   { <[A..Za..z]> }
@@ -80,14 +80,14 @@ my role _US-ASCII-UC
 # compose upper case names of the same regexes/tokens without overwriting
 # builtin character classes.
 
-role US-ASCII-UC:ver<0.6.5>:auth<R Schmidt (ronaldxs@software-path.com)>
+role US-ASCII-UC:ver<0.6.6>:auth<R Schmidt (ronaldxs@software-path.com)>
     does _US-ASCII-UC
 {
     token ALPHAx    { <.US-ASCII::alpha_x> }
     token ALNUMx    { <.US-ASCII::alnum_x> }
 }
 
-role US-ASCII-ABNF:ver<0.6.5>:auth<R Schmidt (ronaldxs@software-path.com)>
+role US-ASCII-ABNF:ver<0.6.6>:auth<R Schmidt (ronaldxs@software-path.com)>
     does _US-ASCII-UC
     does US-ASCII::ABNF::Core::Only
     does US-ASCII::ABNF::Core::More
@@ -220,12 +220,6 @@ SP      | ' '
 WSP     | US-ASCII blank / BLANK
 =end table
 
-=head1 ABNF Core
-
-Since ABNF is defined using the ASCII character set the distribution includes
-an US-ASCII::ABNF::Core module defining the tokens for ABNF Core as enumerated
-in RFC 5234.  See that module's documentation for more detail.
-
 =head2 US-ASCIIx import tag :POSIX
 
 As previously mentioned for the C<US-ASCII> module C<ALPHA> and C<ALNUM>
@@ -245,7 +239,13 @@ DO NOT include underscore.
 =item PRINT
 =item CNTRL
 
-=head2 Backward compatibility break with CR, LF, SP.
+=head1 ABNF Core
+
+Since ABNF is defined using the ASCII character set the distribution includes
+an US-ASCII::ABNF::Core module defining the tokens for ABNF Core as enumerated
+in RFC 5234.  See that module's documentation for more detail.
+
+=head1 Backward compatibility break with CR, LF, SP.
 
 In 0.1.X releases CR, LF and SP were provided by the US-ASCII grammar.  They
 are now treated as ABNF Core only tokens, as they can be easily enough coded
