@@ -3,7 +3,7 @@ use US-ASCII::ABNF::Core::More;
 
 use _US-ASCII;
 
-grammar US-ASCIIx:ver<0.6.4>:auth<R Schmidt (ronaldxs@software-path.com)>
+grammar US-ASCIIx:ver<0.6.5>:auth<R Schmidt (ronaldxs@software-path.com)>
     is _US-ASCII
 {
     # don't make alnum depend on alpha - RT #130527
