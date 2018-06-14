@@ -1,10 +1,10 @@
-[![Build Status](https://travis-ci.org/ronaldxs/Perl6-US-ASCII.png)](https://travis-ci.org/ronaldxs/Perl6-US-ASCII)
-[![Build status](https://ci.appveyor.com/api/projects/status/github/ronaldxs/Perl6-US-ASCII?svg=true)](https://ci.appveyor.com/project/ronaldxs/Perl6-US-ASCII/branch/master)
-
 NAME
 ====
 
 US-ASCII - ASCII restricted character classes based on Perl 6 predefined classes and ABNF/RFC5234 Core.
+
+[![Build Status](https://travis-ci.org/ronaldxs/Perl6-US-ASCII.png)](https://travis-ci.org/ronaldxs/Perl6-US-ASCII)
+[![Build status](https://ci.appveyor.com/api/projects/status/github/ronaldxs/Perl6-US-ASCII?svg=true)](https://ci.appveyor.com/project/ronaldxs/Perl6-US-ASCII/branch/master)
 
 SYNOPSIS
 ========
@@ -35,6 +35,9 @@ say so /<ALPHA>/ for <A À 9>; # True, False, False
 
 DESCRIPTION
 ===========
+
+[![Build Status](https://travis-ci.org/ronaldxs/Perl6-US-ASCII.png)](https://travis-ci.org/ronaldxs/Perl6-US-ASCII)
+[![Build status](https://ci.appveyor.com/api/projects/status/github/ronaldxs/Perl6-US-ASCII?svg=true)](https://ci.appveyor.com/project/ronaldxs/Perl6-US-ASCII/branch/master)
 
 This module provides regex character classes restricted to ASCII including the predefined character classes of Perl 6 and ABNF (RFC 5234) Core rules. The US-ASCII grammar defines most character classes in lower case for direct use without composition as in the first SYNOPSIS example. The US-ASCII-UC role defines all character classes in upper case and is intended for composition into grammars. Upper case US-ASCII tokens may be imported with the import tag `:UC`. Composition of upper case named regex/tokens does not override the predefined Perl 6 character classes and conforms better to RFC 5234 ABNF, facilitating use with grammars of other internet standards based on that RFC.
 
